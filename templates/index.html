@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Life Expectancy & Insurance Premium Predictor</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 40px; text-align: center; }
+    .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 2px 2px 10px gray; }
+    h2 { color: #2C3E50; }
+    h3 { margin-top: 20px; }
+    form { text-align: left; }
+    label { font-weight: bold; margin-top: 10px; display: block; }
+    input, select { width: 100%; padding: 8px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc; }
+    button { background: #3498DB; color: white; padding: 10px; border: none; border-radius: 5px; margin-top: 15px; width: 100%; }
+    .result { margin-top: 20px; font-size: 20px; color: #27AE60; font-weight: bold; }
+    .info { background: #e7f3fe; padding: 10px; margin-top: 5px; border: 1px solid #b3d4fc; border-radius: 5px; font-size: 0.9em; text-align: left; }
+  </style>
+  <script>
+    function toggleTermLength() {
+      var insuranceType = document.getElementById("insurance_type").value;
+      var termDiv = document.getElementById("term_div");
+      if (insuranceType === "term") {
+        termDiv.style.display = "block";
+      } else {
+        termDiv.style.display = "none";
+      }
+    }
+    window.onload = function() {
+      toggleTermLength();
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>Life Expectancy & Insurance Premium Predictor</h2>
+    <p>Enter your details below to predict your expected age of death and calculate your monthly life insurance premium.</p>
+    
+    <form method="post">
+      <div class="section">
+        <h3>Policy Details</h3>
+        <label>Current Age:</label>
+        <input type="number" name="current_age" required>
+        
+        <label>Policy Amount ($):</label>
+        <input type="number" name="policy_amount" required>
+        
+        <label>Insurance Type:</label>
+        <select name="insurance_type" id="insurance_type" onchange="toggleTermLength()">
+          <option value="term">Term Life</option>
+          <option value="whole">Whole Life</option>
+        </select>
+        
+        <div id="term_div">
+          <label>Term Length (years):</label>
+          <input type="number" name="term_length">
+          <div class="info">
+            Enter the number of years for your term life policy (numeric value only, e.g. 20).
+          </div>
+        </div>
+      </div>
+      
+      <div class="section">
+        <h3>Health & Demographic Inputs</h3>
+        <label>Weight (lbs):</label>
+        <input type="number" name="weight" required>
+        
+        <label>Height (inches):</label>
+        <input type="number" name="height" required>
+        
+        <label>Systolic Blood Pressure (mmHg):</label>
+        <input type="number" name="sys_bp" required>
+        <div class="info">
+          Typical ranges: Normal: 90–120, Elevated: 121–129, Hypertension Stage 1: 130–139, Hypertension Stage 2: ≥140.
+          Please enter a numeric value.
+        </div>
+        
+        <label>Cholesterol (mg/dL):</label>
+        <input type="number" name="cholesterol" required>
+        <div class="info">
+          Typical ranges: Desirable: <200, Borderline High: 200–239, High: ≥240.
+          Please enter a numeric value.
+        </div>
+        
+        <label>Number of Medications:</label>
+        <input type="number" name="num_meds" required>
+        
+        <label>Occupational Danger (numeric rating):</label>
+        <input type="number" name="occup_danger" required>
+        <div class="info">
+          Scale: 1 = Low risk (minimal hazards), 2 = Moderate risk (occasional hazards), 3 = High risk (frequent hazards).
+          Enter a numeric value (1, 2, or 3).
+        </div>
+        
+        <label>Lifestyle Danger (numeric rating):</label>
+        <input type="number" name="ls_danger" required>
+        <div class="info">
+          Scale: 1 = Low risk (healthy habits), 2 = Moderate risk (some unhealthy behaviors), 3 = High risk (significant unhealthy behaviors).
+          Enter a numeric value (1, 2, or 3).
+        </div>
+        
+        <label>Drinks per Week:</label>
+        <input type="number" name="drinks_aweek" required>
+        
+        <label>Sex (m/f):</label>
+        <input type="text" name="sex" required>
+      </div>
+      
+      <div class="section">
+        <h3>Additional Health & Family History</h3>
+        <label>Smoker? (y/n):</label>
+        <input type="text" name="smoker" required>
+        
+        <label>Nicotine/Other? (y/n):</label>
+        <input type="text" name="nic_other" required>
+        
+        <label>Cannabis? (y/n):</label>
+        <input type="text" name="cannabis" required>
+        
+        <label>Opioids? (y/n):</label>
+        <input type="text" name="opioids" required>
+        
+        <label>Other Drugs? (y/n):</label>
+        <input type="text" name="other_drugs" required>
+        
+        <label>Addiction? (y/n):</label>
+        <input type="text" name="addiction" required>
+        
+        <label>Diabetes? (y/n):</label>
+        <input type="text" name="diabetes" required>
+        
+        <label>High Drug Score (hds)? (y/n):</label>
+        <input type="text" name="hds" required>
+        
+        <label>Asthma? (y/n):</label>
+        <input type="text" name="asthma" required>
+        
+        <label>Immune Deficiency? (y/n):</label>
+        <input type="text" name="immune_defic" required>
+        
+        <label>Family Cancer? (y/n):</label>
+        <input type="text" name="family_cancer" required>
+        
+        <label>Family Heart Disease? (y/n):</label>
+        <input type="text" name="family_heart_disease" required>
+        
+        <label>Family Cholesterol? (y/n):</label>
+        <input type="text" name="family_cholesterol" required>
+      </div>
+      
+      <button type="submit">Predict and Calculate Premium</button>
+    </form>
+    
+    {% if prediction %}
+      <div class="result">
+        Predicted Age of Death: <strong>{{ prediction }}</strong>
+      </div>
+    {% endif %}
+    
+    {% if premium %}
+      <div class="result">
+        Estimated Monthly Premium: <strong>${{ premium }}</strong>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
