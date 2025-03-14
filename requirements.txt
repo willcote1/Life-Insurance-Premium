@@ -65,6 +65,7 @@ kanji==0.0.0
 kiwisolver==1.4.4
 langchain==0.0.219
 langchainplus-sdk==0.0.17
+lifelines==0.30.0
 lxml==4.9.1
 MarkupSafe==2.1.1
 marshmallow==3.19.0
