@@ -1,6 +1,6 @@
 # Life-Insurance-Premium
 
-to use: https://life-insurance-premium-9.onrender.com/
+to use: https://life-insurance-premium-9.onrender.com/ (note: free domain makes the load time ~50 seconds sometimes)
 
 This is a calculator for life insurance premiums based on user demographics.
 
